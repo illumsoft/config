@@ -1,0 +1,22 @@
+" This file is sources by gui only version of vim
+"
+if has('gui')
+  set nocompatible
+  silent! source $VIMRUNTIME/vimrc_example.vim
+  silent! source $VIMRUNTIME/mswin.vim
+  behave mswin
+
+  au FileType crontab,fstab,make set noet ts=8 sw=8
+
+  set guioptions-=T          " Remove toolbar
+  set guioptions-=m          " Remove menu
+  set guifont=Courier_New:h10:cRUSSIAN
+  set encoding=utf-8
+  silent! colorscheme desert " My favourite scheme
+
+  " Save session settings
+  set sessionoptions+=resize,winpos
+  autocmd VIMEnter * :source ~\vimfiles\session_last.vim
+  autocmd VIMLeave * :mksession! ~\vimfiles\session_last.vim
+endif
+
