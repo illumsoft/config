@@ -1,0 +1,35 @@
+[user]
+	name = user
+	email = user@localhost
+[core]
+	whitespace = blank-at-eol,space-before-tab,trailing-space,cr-at-eol
+	pager = less -+S
+	editor = vim -u ~/vimfiles/git.vimrc
+	autocrlf = false
+	safecrlf = true
+[rebase]
+	autosquash = false
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = false
+#[http]
+#	proxy = http://<user>:<pass>@<proxy server>:8080
+[color "diff"]
+	whitespace = blue reverse
+[push]
+	default = nothing
+[color "branch"]
+	upstream = yellow
+[gui]
+	recentrepo = ~/repo/test_rebase
+[difftool]
+	prompt = false
+[difftool "idiff"]
+	cmd = diff -iu \"$LOCAL\" \"$REMOTE\"
+[difftool "vdiff"]
+	cmd = vim -d \"$LOCAL\" \"$REMOTE\"
+[difftool "ExamDiff"]
+	cmd = ~/bin/plsqldev/ExamDiff/ExamDiff.exe \"$LOCAL\" \"$REMOTE\" //t
+[difftool "winmerge"]
+	cmd = ~/bin/winmerge/WinMergeU.exe \"$LOCAL\" \"$REMOTE\"
