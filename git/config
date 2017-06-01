@@ -1,0 +1,21 @@
+[branch "master"]
+	remote = first_gitserver
+	merge = refs/heads/master
+[remote "first_gitserver"]
+	url = https://first_gitserver.com/user/repo.git
+	pushurl = git@first_gitserver.com:user/repo.git
+	fetch = +refs/heads/*:refs/remotes/first_gitserver/*
+	#
+	# git config --local remote.first_gitserver.sshCommand 'ssh -i ~/.ssh/first_gitserver_privkey'
+	sshCommand = ssh -i ~/.ssh/first_gitserver_privkey
+[remote "second_gitserver"]
+	url = https://second_gitserver.com/user/repo.git
+	pushurl = git@second_gitserver.com:user/repo.git
+	fetch = +refs/heads/*:refs/remotes/second_gitserver/*
+	#
+	# git config --local remote.second_gitserver.sshCommand 'ssh -i ~/.ssh/second_gitserver_privkey'
+	sshCommand = ssh -i ~/.ssh/second_gitserver_privkey
+[http "https://second_gitserver.com"]
+	# SSL certificate problem: self signed certificate in certificate chain
+	# disable the check
+	sslVerify = false
