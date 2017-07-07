@@ -78,3 +78,6 @@ nnoremap * :let @/=expand('<cword>')<CR>
 " Run selected block or current line
 vnoremap ,R :.w !ksh<CR>
 nnoremap ,r :exec '!'.getline('.')
+" Enter current Date
+"nnoremap ,d :r!date /T<CR>:r!time /T<CR>kJ:s/\s*\r//g<CR>:let @/ = ''<CR>
+nnoremap ,d o<Esc>"=strftime("%Y-%m-%d %H:%M:%S")<CR>p
