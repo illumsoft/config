@@ -6,7 +6,6 @@ silent! colorscheme desert
 "
 set splitbelow
 set encoding=utf-8
-set guifont=Courier_New:h10:cRUSSIAN
 "
 set noswapfile
 set directory=~/tmp
@@ -69,7 +68,23 @@ inoremap <silent> <C-u> <ESC>u:set paste<CR>.:set nopaste<CR>gi
 
 " GUI version
 if has('gui_running')
-  source ~/vimfiles/vimrc.gui
+  set nocompatible
+  silent! source $VIMRUNTIME/vimrc_example.vim
+  silent! source $VIMRUNTIME/mswin.vim
+  behave mswin
+
+  au FileType crontab,fstab,make set noet ts=8 sw=8
+
+  set guioptions-=T          " Remove toolbar
+  set guioptions-=m          " Remove menu
+  set guifont=Courier_New:h10:cRUSSIAN
+  set encoding=utf-8
+  "silent! colorscheme desert
+
+  " Save session settings
+  set sessionoptions+=resize,winpos
+  autocmd VIMEnter * :source ~\vimfiles\session_last.vim
+  autocmd VIMLeave * :mksession! ~\vimfiles\session_last.vim
 endif
 
 " Select on *
