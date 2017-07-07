@@ -96,3 +96,7 @@ nnoremap ,r :exec '!'.getline('.')
 " Enter current Date
 "nnoremap ,d :r!date /T<CR>:r!time /T<CR>kJ:s/\s*\r//g<CR>:let @/ = ''<CR>
 nnoremap ,d o<Esc>"=strftime("%Y-%m-%d %H:%M:%S")<CR>p
+
+"From next line up to the end
+"search for a word under cursor and add 'NULL' at the begining of found lines
+"nnoremap ,n :let @n=expand('<cword>')<CR>:let @l=line(".")<CR>:exec ":.+,$s/^\\(.*" . @n . "\\)/NULL\\1/"<CR>:exec ":" . @l<CR>
