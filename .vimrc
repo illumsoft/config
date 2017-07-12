@@ -83,8 +83,8 @@ if has('gui_running')
 
   " Save session settings
   set sessionoptions+=resize,winpos
-  autocmd VIMEnter * :source ~\vimfiles\session_last.vim
-  autocmd VIMLeave * :mksession! ~\vimfiles\session_last.vim
+  autocmd VIMEnter * :source ~/vimfiles/session_last.vim
+  autocmd VIMLeave * :mksession! ~/vimfiles/session_last.vim
 endif
 
 " Select on *
