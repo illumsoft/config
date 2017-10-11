@@ -92,7 +92,11 @@ nnoremap * :let @/=expand('<cword>')<CR>
 
 " Run selected block or current line
 vnoremap ,R :.w !ksh<CR>
-nnoremap ,r :exec '!'.getline('.')
+nnoremap ,r :exec '!'.getline('.')<CR>
+
+" Calc line under cursor with bc
+nnoremap ,b :exec 'r!' . 'echo "' . getline(".") . '" \| bc -l'<CR>kA = <ESC>J
+
 " Enter current Date
 "nnoremap ,d :r!date /T<CR>:r!time /T<CR>kJ:s/\s*\r//g<CR>:let @/ = ''<CR>
 nnoremap ,d o<Esc>"=strftime("%Y-%m-%d %H:%M:%S")<CR>p
