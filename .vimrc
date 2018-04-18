@@ -46,7 +46,8 @@ function IsSet(o,v1,v2)
   return a:o ? a:v1 : a:v2
 endfunction
 
-set statusline=%<%t%h%m%r[%{&ft}][%{&ff}][%{&fenc}]\ %{IsSet(&bin,'[bin]','[nobin]')}[%{&enc}]\ (%{strftime(\"%H:%M\ %Y/%m/%d\",getftime(expand(\"%:p\")))})%=%l,%c%V\ %P
+" set statusline=%<%t%h%m%r[%{&ft}][%{&ff}][%{&fenc}]\ %{IsSet(&bin,'[bin]','[nobin]')}[%{&enc}]\ (%{strftime(\"%H:%M\ %Y/%m/%d\",getftime(expand(\"%:p\")))})%=%l,%c%V\ %P
+set statusline=%<%t%h%m%r[%{&ft}][%{&ff}][%{&fenc}]\ %{IsSet(&bin,'[bin]','[nobin]')}[%{&enc}]\ (%{strftime(\"%H:%M\ %Y/%m/%d\",getftime(expand(\"%:p\")))})%=byte:%o,line:%l,col:%c%V\ %P
 
 let g:xml_syntax_folding=1
 set noexpandtab          " no replace tabs with spaces
@@ -54,6 +55,15 @@ set noexpandtab          " no replace tabs with spaces
 " highlight non ascii symbols
 highlight nonascii guibg=DarkGreen ctermbg=DarkGreen term=standout
 " au BufRead * syntax match nonascii "[^\u0000-\u007F]"
+"highlight DiffAdd    term=bold ctermfg=7 ctermbg=4 guibg=Brown
+"highlight DiffChange term=bold ctermfg=3 ctermbg=1 guibg=DarkMagenta
+highlight Search     term=none ctermfg=4 ctermbg=7 guifg=wheat guibg=peru
+" Green 2; Brown 3;
+highlight sqlSpecial   term=bold ctermfg=3 guifg=navajowhite
+highlight sqlKeyword   term=bold ctermfg=3 guifg=navajowhite
+highlight sqlOperator  term=bold ctermfg=3 guifg=navajowhite
+highlight sqlStatement term=bold ctermfg=3 guifg=navajowhite
+
 
 " Space for fold (zc)/unfold (zo)
 nnoremap <space> za
