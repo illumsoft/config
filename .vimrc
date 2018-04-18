@@ -1,5 +1,31 @@
 " This file is sources by gui and cli versions of vim
 
+"if has("autocmd")
+"  autocmd VIMEnter * :source ~/.vim/session_last.vim
+"  autocmd VIMLeave * :mksession! ~/.vim/session_last.vim
+"endif
+
+" GUI version
+if has('gui_running')
+  set nocompatible
+  silent! source $VIMRUNTIME/vimrc_example.vim
+  silent! source $VIMRUNTIME/mswin.vim
+  behave mswin
+
+  au FileType crontab,fstab,make set noet ts=8 sw=8
+
+  set guioptions-=T          " Remove toolbar
+  set guioptions-=m          " Remove menu
+  set guifont=Courier_New:h10:cRUSSIAN
+  set encoding=utf-8
+  "silent! colorscheme desert
+
+  " Save session settings
+  set sessionoptions+=resize,winpos
+  autocmd VIMEnter * :source ~\vimfiles\session_last.vim
+  autocmd VIMLeave * :mksession! ~\vimfiles\session_last.vim
+endif
+
 " Highlight
 syntax on
 silent! colorscheme desert
@@ -71,32 +97,6 @@ nnoremap <space> za
 " Fix tabs after copy&paste
 inoremap <silent> <C-u> <ESC>u:set paste<CR>.:set nopaste<CR>gi
 
-"if has("autocmd")
-"  autocmd VIMEnter * :source ~/.vim/session_last.vim
-"  autocmd VIMLeave * :mksession! ~/.vim/session_last.vim
-"endif " has("autocmd")
-
-" GUI version
-if has('gui_running')
-  set nocompatible
-  silent! source $VIMRUNTIME/vimrc_example.vim
-  silent! source $VIMRUNTIME/mswin.vim
-  behave mswin
-
-  au FileType crontab,fstab,make set noet ts=8 sw=8
-
-  set guioptions-=T          " Remove toolbar
-  set guioptions-=m          " Remove menu
-  set guifont=Courier_New:h10:cRUSSIAN
-  set encoding=utf-8
-  "silent! colorscheme desert
-
-  " Save session settings
-  set sessionoptions+=resize,winpos
-  autocmd VIMEnter * :source ~/vimfiles/session_last.vim
-  autocmd VIMLeave * :mksession! ~/vimfiles/session_last.vim
-endif
-
 " Select on *
 nnoremap * :let @/=expand('<cword>')<CR>
 
@@ -114,3 +114,6 @@ nnoremap ,d o<Esc>"=strftime("%Y-%m-%d %H:%M:%S")<CR>p
 "From next line up to the end
 "search for a word under cursor and add 'NULL' at the begining of found lines
 "nnoremap ,n :let @n=expand('<cword>')<CR>:let @l=line(".")<CR>:exec ":.+,$s/^\\(.*" . @n . "\\)/NULL\\1/"<CR>:exec ":" . @l<CR>
+" Compile and run current file
+nnoremap ,c :exec '!'.'gcc -Wall -o '.expand('%:r').' '.expand('%')
+nnoremap ,x :exec '! ./'.expand('%:r')
