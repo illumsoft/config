@@ -115,5 +115,10 @@ nnoremap ,d o<Esc>"=strftime("%Y-%m-%d %H:%M:%S")<CR>p
 "search for a word under cursor and add 'NULL' at the begining of found lines
 "nnoremap ,n :let @n=expand('<cword>')<CR>:let @l=line(".")<CR>:exec ":.+,$s/^\\(.*" . @n . "\\)/NULL\\1/"<CR>:exec ":" . @l<CR>
 " Compile and run current file
-nnoremap ,c :exec '!'.'gcc -Wall -o '.expand('%:r').' '.expand('%')
+" nnoremap ,c :exec '!'.'gcc -Wall -Wno-format -o '.expand('%:r').' '.expand('%')
+" nnoremap ,c :w \| :exec '!'.'gcc -ansi -pedantic -Wall -Wno-format -O0 -o '.expand('%:r').' '.expand('%')
+" C languages
+"nnoremap ,c :w \| :exec '!'.'gcc -ansi -pedantic -Wall -Wno-format -O0 -o '.expand('%:r').' '.expand('%')
+" C++ languages
+nnoremap ,c :w \| :exec '!'.'g++ -std=ansi -pedantic -Wall -Wno-format -O0 -o '.expand('%:r').' '.expand('%')
 nnoremap ,x :exec '! ./'.expand('%:r')
